@@ -15,6 +15,8 @@ if(secretOrKey=='mysecretkeythatshouldnotnestoredhere')
 {
     console.log(process.env);
 }
+else
+    console.log(" environment key has different  key")
 var router = express.Router();
 
 testob={"username":"jjj","password": "passjj"};
@@ -43,11 +45,9 @@ router.get('/get/:username',function(req,res){
     if(!user) {
         res.send('  un valid ');
     }
-        else {
-        if (user == testob.username)
-            res.send('get request matches successfully :' + user);
-        else res.send('get request does not match:' + user);
-    }
+
+    else res.send('get request :' + user);
+
 });
 
 router.put('/put',function(req,res){
@@ -62,7 +62,7 @@ router.put('/put',function(req,res){
         res.json("put request updates:"+username+' + '+password);
     }
 });
-
+var createError = require('http-errors')
 router.post('/post', function(req, res) {
     if (!req.body.username || !req.body.password) {
         res.json({success: false, msg: 'Please pass username and password.'});
@@ -77,35 +77,64 @@ router.post('/post', function(req, res) {
     }
 });
 
-router.patch('/patch',function(req,res){
-    res.send('Reject this method');
+router.patch('/patch',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.copy('/copy',function(req,res){
-    res.send('Reject this method');
+router.copy('/copy',function(req,res,next){
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.head('/head',function(req,res){
-    res.send('Reject this method');
+router.head('/head',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.options('/options',function(req,res){
-    res.send('Reject this method');
+router.options('/options',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.link('/link',function(req,res){
-    res.send('Reject this method');
+router.link('/link',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.unlink('/unlink',function(req,res){
-    res.send('Reject this method');
+router.unlink('/unlink',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.purge('/purge',function(req,res){
-    res.send('Reject this method');
+router.purge('/purge',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.lock('/lock',function(req,res){
-    res.send('Reject this method');
+router.lock('/lock',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.unlock('/unlock',function(req,res){
-    res.send('Reject this method');
+router.unlock('/unlock',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
-router.propfind('/profind',function(req,res){
-    res.send('Reject this method');
+router.propfind('/profind',function(req,res,next){
+
+    return next(createError(404, 'These method is rejected.'))
+    next()
+
 });
 
 
